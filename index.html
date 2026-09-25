@@ -171,7 +171,7 @@ footer{background:#090a0d;color:#878e9b;padding:45px 6%;display:flex;justify-con
     </div>
   </section>
 
-  <!-- 2. STORY SECTION (ELABORATED) -->
+  <!-- 2. STORY SECTION -->
   <section class="tab-content" id="sec-story">
     <div class="story-wrapper">
       <div class="section-kicker">Genesis &amp; Direction</div>
@@ -212,7 +212,7 @@ footer{background:#090a0d;color:#878e9b;padding:45px 6%;display:flex;justify-con
     </div>
   </section>
 
-  <!-- 3. COLLECTION SECTION (ELABORATED PRODUCT CARDS) -->
+  <!-- 3. COLLECTION SECTION -->
   <section class="tab-content" id="sec-collection">
     <div class="collection-wrapper">
       <div class="section-kicker">Core Lineup</div>
@@ -317,7 +317,7 @@ footer{background:#090a0d;color:#878e9b;padding:45px 6%;display:flex;justify-con
     </div>
   </section>
 
-  <!-- 4. PHILOSOPHY SECTION (ELABORATED) -->
+  <!-- 4. PHILOSOPHY SECTION -->
   <section class="tab-content" id="sec-philosophy">
     <div class="philosophy-wrapper">
       <div class="section-kicker" style="color:#7b8493">Design Standard</div>
@@ -359,7 +359,7 @@ footer{background:#090a0d;color:#878e9b;padding:45px 6%;display:flex;justify-con
     </div>
   </section>
 
-  <!-- 5. CONTACT SECTION (ELABORATED) -->
+  <!-- 5. CONTACT SECTION -->
   <section class="tab-content" id="sec-contact">
     <div class="contact-wrapper">
       <div class="section-kicker">Client Service &amp; Press</div>
@@ -425,29 +425,23 @@ footer{background:#090a0d;color:#878e9b;padding:45px 6%;display:flex;justify-con
 </footer>
 
 <script>
-// State management: single URL, tabbed view switcher
 function navigateTo(sectionId) {
-  // Hide all sections
   const sections = document.querySelectorAll('.tab-content');
   sections.forEach(sec => sec.classList.remove('active'));
 
-  // Deactivate all navbar buttons
   const navButtons = document.querySelectorAll('#navbar button');
   navButtons.forEach(btn => btn.classList.remove('active'));
 
-  // Activate selected section
   const targetSection = document.getElementById('sec-' + sectionId);
   if (targetSection) {
     targetSection.classList.add('active');
   }
 
-  // Highlight corresponding navbar button
   const targetBtn = document.querySelector(`#navbar button[data-tab="${sectionId}"]`);
   if (targetBtn) {
     targetBtn.classList.add('active');
   }
 
-  // Smooth scroll to top of content view
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
