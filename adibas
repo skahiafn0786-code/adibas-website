@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>adibas — Built for Every Move</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111418;background:#fff}
+
+header{height:76px;background:#0d0f12;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:100;border-bottom:1px solid #1e2229}
+.brand{color:#fff;text-decoration:none;font-size:24px;font-weight:900;letter-spacing:-1.5px;display:inline-flex;align-items:center;gap:10px}
+.brand-mark{display:inline-flex;gap:3px;align-items:flex-end;height:22px}
+.brand-mark span{display:block;width:5px;background:#fff;transform:skew(-16deg)}
+.brand-mark span:nth-child(1){height:8px}
+.brand-mark span:nth-child(2){height:15px}
+.brand-mark span:nth-child(3){height:22px}
+
+nav{display:flex;gap:32px}
+nav a{color:#a2a8b4;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:0.5px;transition:color 0.2s}
+nav a:hover{color:#fff}
+
+.hero{min-height:520px;padding:90px 7%;display:flex;align-items:center;color:#fff;background:linear-gradient(135deg,#0d0f12 0%,#181b22 60%,#262b35 100%)}
+.hero-copy{max-width:620px}
+.kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#8f96a3;margin-bottom:12px}
+.hero h1{font-size:clamp(44px,6vw,68px);line-height:1.02;margin:0 0 22px;letter-spacing:-2px;font-weight:900}
+.hero p{font-size:17px;line-height:1.65;color:#c5cbd5;margin-bottom:30px}
+.hero-cta{display:inline-flex;gap:14px}
+.btn-primary{background:#fff;color:#0d0f12;padding:14px 28px;font-size:13px;font-weight:700;text-decoration:none;border-radius:2px;letter-spacing:0.5px}
+.btn-secondary{background:transparent;color:#fff;border:1px solid #3e4451;padding:14px 28px;font-size:13px;font-weight:700;text-decoration:none;border-radius:2px;letter-spacing:0.5px}
+
+.section{padding:90px 6%}
+.section-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#6b7280;margin-bottom:10px}
+.heading{font-size:36px;margin:0 0 16px;letter-spacing:-1.2px;font-weight:800;color:#0d0f12}
+.intro{color:#5b6270;line-height:1.65;max-width:720px;font-size:16px;margin:0 0 45px}
+
+.about{background:#f6f7f9;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about p{line-height:1.8;color:#4b5260;font-size:15px;margin:0 0 18px}
+.about-hero-box{background:#fff;padding:50px 30px;border-radius:8px;border:1px solid #e2e6eb;box-shadow:0 12px 30px rgba(0,0,0,0.04);text-align:center}
+.about-badge{font-size:42px;font-weight:900;letter-spacing:-2px;margin:10px 0}
+.about-subtag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#717886;font-weight:700}
+
+.product-showcase{display:grid;grid-template-columns:repeat(2,1fr);gap:35px}
+.product-card{background:#fff;border:1px solid #e5e8ec;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.08)}
+.product-media{background:#e7eaee;width:100%;height:320px;position:relative;overflow:hidden}
+.product-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.product-tag{position:absolute;top:16px;left:16px;background:#0d0f12;color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:2px;z-index:2}
+.product-details{padding:26px 28px}
+.product-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.product-header h3{font-size:20px;margin:0;font-weight:800;letter-spacing:-0.5px}
+.product-edition{font-size:12px;font-weight:700;color:#6d7482;text-transform:uppercase;letter-spacing:1px}
+.product-desc{font-size:14px;color:#5a616e;line-height:1.6;margin:0 0 16px}
+.specs-list{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.specs-list li{background:#f3f5f8;color:#474d58;font-size:12px;padding:5px 11px;border-radius:3px;font-weight:500}
+
+.values{background:#0d0f12;color:#fff}
+.values .heading{color:#fff}
+.values .intro{color:#9da4b2}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
+.value-card{border-top:1px solid #282d37;padding-top:24px}
+.value-card small{color:#767e8e;font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase}
+.value-card h3{font-size:20px;margin:12px 0 10px;font-weight:700}
+.value-card p{color:#a9b0bd;line-height:1.7;font-size:14px;margin:0}
+
+.contact{background:#f6f7f9;display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact p{color:#555c68;line-height:1.75;font-size:15px}
+.contact-box{background:#fff;padding:34px;border:1px solid #e1e5ea;border-radius:6px}
+.contact-box label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#333842;display:block;margin-bottom:6px}
+.contact-box input,.contact-box textarea{width:100%;padding:13px;border:1px solid #cbd1da;border-radius:3px;font-family:inherit;font-size:14px;margin-bottom:18px}
+.contact-box textarea{min-height:110px}
+.contact-box button{width:100%;background:#0d0f12;color:#fff;border:0;padding:15px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:3px;cursor:pointer}
+.status-msg{font-size:13px;color:#18794e;margin-top:12px;font-weight:600;display:none}
+
+footer{background:#090a0d;color:#878e9b;padding:40px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:13px;border-top:1px solid #181b22}
+.foot-links{display:flex;gap:26px}
+.foot-links a{color:#878e9b;text-decoration:none}
+.foot-links a:hover{color:#fff}
+
+@media(max-width:960px){
+  .product-showcase{grid-template-columns:1fr}
+  .about,.contact{grid-template-columns:1fr}
+  .value-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#home">
+    <span class="brand-mark"><span></span><span></span><span></span></span>adibas
+  </a>
+  <nav>
+    <a href="#about">Story</a>
+    <a href="#collection">Collection</a>
+    <a href="#values">Philosophy</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="kicker">Built For Every Move</div>
+    <h1>Engineered for the Modern Pace</h1>
+    <p>Four distinct silhouettes grounded in restrained minimalism, ergonomic soles, and clean daily performance.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#collection">View Collection</a>
+      <a class="btn-secondary" href="#contact">Inquiries</a>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div>
+    <div class="section-kicker">Brand Story</div>
+    <h2 class="heading">Crafted Around Clean Living &amp; Movement</h2>
+    <p>adibas was created to offer footwear that bridges technical athletic utility with elevated everyday street styling. We avoid excess ornamentation in favor of purposeful contours, dependable soles, and quiet confidence.</p>
+    <p>Every style in our initial run is engineered with balanced cushioning, reinforced arch support, and resilient materials tailored for active city days.</p>
+  </div>
+  <div class="about-hero-box">
+    <div class="brand-mark" style="height:38px;justify-content:center;margin-bottom:14px;">
+      <span style="background:#0d0f12;width:9px;height:14px;"></span>
+      <span style="background:#0d0f12;width:9px;height:26px;"></span>
+      <span style="background:#0d0f12;width:9px;height:38px;"></span>
+    </div>
+    <div class="about-badge">adibas</div>
+    <div class="about-subtag">Built For Every Move</div>
+  </div>
+</section>
+
+<section class="section" id="collection">
+  <div class="section-kicker">Collection 01</div>
+  <h2 class="heading">Four Core Silhouettes</h2>
+  <p class="intro">Engineered from the ground up. Each pair features signature sculpted soles, reinforced support frames, and subtle side profile branding.</p>
+
+  <div class="product-showcase">
+    
+    <!-- 1. Vertex Run -->
+    <div class="product-card">
+      <div class="product-media">
+        <span class="product-tag">Performance</span>
+        <img src="https://lh3.googleusercontent.com/d/1Y6ojDB-LDuWY0L6JesYXSUZx2tC75FfU" alt="adibas Vertex Run Triple Black">
+      </div>
+      <div class="product-details">
+        <div class="product-header">
+          <h3>Vertex Run</h3>
+          <span class="product-edition">Triple Black</span>
+        </div>
+        <p class="product-desc">All-black technical road runner built with an aerodynamic knit body, integrated heel lock, and sculpted shock-absorbing geometry.</p>
+        <ul class="specs-list">
+          <li>Engineered Micro-Knit</li>
+          <li>Curved Aerodynamic Midsole</li>
+          <li>Reinforced Eyelet Rails</li>
+          <li>Reflective Heel Pull</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2. Urban Classic -->
+    <div class="product-card">
+      <div class="product-media">
+        <span class="product-tag">Court Series</span>
+        <img src="https://lh3.googleusercontent.com/d/1OuLNBRqvifnAEMNum6OxX1qhZcTKq5cO" alt="adibas Urban Classic Chalk Cement">
+      </div>
+      <div class="product-details">
+        <div class="product-header">
+          <h3>Urban Classic</h3>
+          <span class="product-edition">Chalk / Cement</span>
+        </div>
+        <p class="product-desc">Timeless low-top profile combining premium white full-grain leather, soft suede bumper overlays, and an abrasion-resistant rubber cupsole.</p>
+        <ul class="specs-list">
+          <li>Full-Grain Leather Panels</li>
+          <li>Brushed Suede Toe &amp; Heel</li>
+          <li>Cushioned Tongue Collar</li>
+          <li>Dual-Density Rubber Base</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Flex Pro -->
+    <div class="product-card">
+      <div class="product-media">
+        <span class="product-tag">Lifestyle</span>
+        <img src="https://lh3.googleusercontent.com/d/1xySnaS89RUOjgT9FC4K4z1Dx282Dwdwq" alt="adibas Flex Pro Desert Sand">
+      </div>
+      <div class="product-details">
+        <div class="product-header">
+          <h3>Flex Pro</h3>
+          <span class="product-edition">Desert Sand</span>
+        </div>
+        <p class="product-desc">Monochromatic earth-toned everyday shoe featuring high-ventilation open mesh, molded heel stabilization, and ultra-plush walking comfort.</p>
+        <ul class="specs-list">
+          <li>Breathable Open Knit</li>
+          <li>Contrast Taupe Heel Plate</li>
+          <li>Tonal Lacing System</li>
+          <li>Featherlight EVA Midsole</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. Street Edge -->
+    <div class="product-card">
+      <div class="product-media">
+        <span class="product-tag">High-Top</span>
+        <img src="https://lh3.googleusercontent.com/d/1sAlORKlANiEQpSq1S6kRrhi3mCXpdUvh" alt="adibas Street Edge Stealth High-Top">
+      </div>
+      <div class="product-details">
+        <div class="product-header">
+          <h3>Street Edge</h3>
+          <span class="product-edition">Stealth High-Top</span>
+        </div>
+        <p class="product-desc">Padded high-top collar providing ankle stability with architectural stitch lines, perforated vamp, and an all-black leather matte finish.</p>
+        <ul class="specs-list">
+          <li>Matte Finished Leather</li>
+          <li>Padded Ankle Support Wrap</li>
+          <li>High-Density Stitching</li>
+          <li>Grip Pattern Outsole</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section values" id="values">
+  <div class="section-kicker" style="color:#717887">Our Standard</div>
+  <h2 class="heading">Built On Principles</h2>
+  <p class="intro">Every release balances structural endurance with daily ease. We design footwear for constant wear across seasons.</p>
+  <div class="value-grid">
+    <div class="value-card">
+      <small>Standard 01 / Ergonomics</small>
+      <h3>Engineered Motion</h3>
+      <p>Anatomically tuned arches and layered cushioning reduce foot fatigue during prolonged transit and active schedules.</p>
+    </div>
+    <div class="value-card">
+      <small>Standard 02 / Restraint</small>
+      <h3>Clean Aesthetics</h3>
+      <p>Monochrome bases, balanced proportions, and clean lines make each model versatile across street, work, and casual wear.</p>
+    </div>
+    <div class="value-card">
+      <small>Standard 03 / Durability</small>
+      <h3>Rigorous Materials</h3>
+      <p>Reinforced eyelet beds, bonded midsoles, and abrasion-resistant tread rubber ensure long product lifecycles.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div>
+    <div class="section-kicker">Client Service</div>
+    <h2 class="heading">Get in Touch</h2>
+    <p>Reach out to the adibas studio for distribution inquiries, press requests, or questions regarding upcoming product drops.</p>
+  </div>
+  <form class="contact-box" onsubmit="event.preventDefault();document.getElementById('statusMsg').style.display='block';this.reset();">
+    <label>Full Name</label>
+    <input required type="text" placeholder="Alex Taylor">
+    
+    <label>Email Address</label>
+    <input required type="email" placeholder="alex@domain.com">
+    
+    <label>Inquiry Type</label>
+    <input type="text" placeholder="Stockist, Sizing, or Studio Inquiry">
+    
+    <label>Message</label>
+    <textarea required placeholder="Your message..."></textarea>
+    
+    <button type="submit">Submit Inquiry</button>
+    <div class="status-msg" id="statusMsg">Your inquiry has been received. Our team will get back to you shortly.</div>
+  </form>
+</section>
+
+<footer>
+  <a class="brand" href="#home">
+    <span class="brand-mark"><span></span><span></span><span></span></span>adibas
+  </a>
+  <div class="foot-links">
+    <a href="#about">Story</a>
+    <a href="#collection">Collection</a>
+    <a href="#values">Philosophy</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <span>&copy; 2026 adibas Brand Inc. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
