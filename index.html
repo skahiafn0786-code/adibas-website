@@ -7,281 +7,450 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111418;background:#fff}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111418;background:#0d0f12}
 
+/* Header & Sticky Nav */
 header{height:76px;background:#0d0f12;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:100;border-bottom:1px solid #1e2229}
-.brand{color:#fff;text-decoration:none;font-size:24px;font-weight:900;letter-spacing:-1.5px;display:inline-flex;align-items:center;gap:10px}
+.brand{color:#fff;text-decoration:none;font-size:24px;font-weight:900;letter-spacing:-1.5px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
 .brand-mark{display:inline-flex;gap:3px;align-items:flex-end;height:22px}
 .brand-mark span{display:block;width:5px;background:#fff;transform:skew(-16deg)}
 .brand-mark span:nth-child(1){height:8px}
 .brand-mark span:nth-child(2){height:15px}
 .brand-mark span:nth-child(3){height:22px}
 
-nav{display:flex;gap:32px}
-nav a{color:#a2a8b4;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:0.5px;transition:color 0.2s}
-nav a:hover{color:#fff}
+nav{display:flex;gap:12px}
+nav button{background:none;border:none;color:#8f96a3;font-size:13px;font-weight:600;letter-spacing:0.5px;cursor:pointer;padding:10px 16px;border-radius:4px;transition:all 0.2s}
+nav button:hover{color:#fff;background:#1a1e26}
+nav button.active{color:#fff;background:#222733;border-bottom:2px solid #fff}
 
-.hero{min-height:520px;padding:90px 7%;display:flex;align-items:center;color:#fff;background:linear-gradient(135deg,#0d0f12 0%,#181b22 60%,#262b35 100%)}
-.hero-copy{max-width:620px}
-.kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#8f96a3;margin-bottom:12px}
-.hero h1{font-size:clamp(44px,6vw,68px);line-height:1.02;margin:0 0 22px;letter-spacing:-2px;font-weight:900}
-.hero p{font-size:17px;line-height:1.65;color:#c5cbd5;margin-bottom:30px}
+/* Main Viewport Container */
+main{min-height:calc(100vh - 76px - 140px);background:#fff}
+.tab-content{display:none;animation:fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1)}
+.tab-content.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Common Layout Elements */
+.section-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#6b7280;margin-bottom:12px}
+.section-heading{font-size:clamp(32px,4vw,44px);margin:0 0 16px;letter-spacing:-1.2px;font-weight:900;color:#0d0f12}
+.section-intro{color:#555d6b;line-height:1.75;max-width:820px;font-size:17px;margin:0 0 45px}
+
+/* Tab 1: Home View */
+.hero{min-height:560px;padding:90px 7%;display:flex;align-items:center;color:#fff;background:linear-gradient(135deg,#0d0f12 0%,#181b22 55%,#262c37 100%)}
+.hero-copy{max-width:680px}
+.hero-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#9aa2b1;margin-bottom:14px}
+.hero h1{font-size:clamp(44px,6vw,70px);line-height:1.02;margin:0 0 22px;letter-spacing:-2px;font-weight:900}
+.hero p{font-size:18px;line-height:1.65;color:#c5cbd5;margin-bottom:32px}
 .hero-cta{display:inline-flex;gap:14px}
-.btn-primary{background:#fff;color:#0d0f12;padding:14px 28px;font-size:13px;font-weight:700;text-decoration:none;border-radius:2px;letter-spacing:0.5px}
-.btn-secondary{background:transparent;color:#fff;border:1px solid #3e4451;padding:14px 28px;font-size:13px;font-weight:700;text-decoration:none;border-radius:2px;letter-spacing:0.5px}
+.btn-primary{background:#fff;color:#0d0f12;padding:15px 30px;font-size:13px;font-weight:700;border:none;border-radius:3px;letter-spacing:0.5px;cursor:pointer;transition:background 0.2s}
+.btn-primary:hover{background:#e3e6eb}
+.btn-secondary{background:transparent;color:#fff;border:1px solid #3e4451;padding:15px 30px;font-size:13px;font-weight:700;border-radius:3px;letter-spacing:0.5px;cursor:pointer;transition:border-color 0.2s}
+.btn-secondary:hover{border-color:#fff}
 
-.section{padding:90px 6%}
-.section-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#6b7280;margin-bottom:10px}
-.heading{font-size:36px;margin:0 0 16px;letter-spacing:-1.2px;font-weight:800;color:#0d0f12}
-.intro{color:#5b6270;line-height:1.65;max-width:720px;font-size:16px;margin:0 0 45px}
+.home-summary{padding:80px 7%;background:#f6f7f9;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.summary-card{background:#fff;padding:32px;border:1px solid #e2e6eb;border-radius:6px}
+.summary-card h4{margin:0 0 10px;font-size:18px;font-weight:800;letter-spacing:-0.5px}
+.summary-card p{margin:0;font-size:14px;color:#5b6270;line-height:1.65}
 
-.about{background:#f6f7f9;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about p{line-height:1.8;color:#4b5260;font-size:15px;margin:0 0 18px}
-.about-hero-box{background:#fff;padding:50px 30px;border-radius:8px;border:1px solid #e2e6eb;box-shadow:0 12px 30px rgba(0,0,0,0.04);text-align:center}
-.about-badge{font-size:42px;font-weight:900;letter-spacing:-2px;margin:10px 0}
-.about-subtag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#717886;font-weight:700}
+/* Tab 2: Story View */
+.story-wrapper{padding:90px 7%}
+.story-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:60px;align-items:center;margin-bottom:70px}
+.story-text p{line-height:1.85;color:#454c59;font-size:16px;margin:0 0 20px}
+.story-banner-box{background:#f6f7f9;padding:60px 40px;border-radius:8px;border:1px solid #e1e5ea;text-align:center}
+.story-brand-badge{font-size:46px;font-weight:900;letter-spacing:-2px;margin:12px 0 6px}
+.story-subtag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#717886;font-weight:700}
+.story-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;border-top:1px solid #e6e9ee;padding-top:50px}
+.timeline-item h4{font-size:18px;margin:0 0 8px;font-weight:800}
+.timeline-item p{font-size:14px;line-height:1.65;color:#5d6472;margin:0}
 
-.product-showcase{display:grid;grid-template-columns:repeat(2,1fr);gap:35px}
-.product-card{background:#fff;border:1px solid #e5e8ec;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+/* Tab 3: Collection View */
+.collection-wrapper{padding:90px 7%}
+.product-showcase{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.product-card{background:#fff;border:1px solid #e5e8ec;border-radius:6px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.04);transition:transform 0.25s,box-shadow 0.25s}
 .product-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.08)}
-.product-media{background:#e7eaee;width:100%;height:320px;position:relative;overflow:hidden}
+.product-media{background:#e7eaee;width:100%;height:340px;position:relative;overflow:hidden}
 .product-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .product-tag{position:absolute;top:16px;left:16px;background:#0d0f12;color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:2px;z-index:2}
-.product-details{padding:26px 28px}
-.product-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-.product-header h3{font-size:20px;margin:0;font-weight:800;letter-spacing:-0.5px}
+.product-details{padding:30px}
+.product-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.product-header h3{font-size:22px;margin:0;font-weight:900;letter-spacing:-0.5px}
 .product-edition{font-size:12px;font-weight:700;color:#6d7482;text-transform:uppercase;letter-spacing:1px}
-.product-desc{font-size:14px;color:#5a616e;line-height:1.6;margin:0 0 16px}
+.product-desc{font-size:15px;color:#525866;line-height:1.65;margin:0 0 20px}
+.specs-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#88909d;margin-bottom:10px}
 .specs-list{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
-.specs-list li{background:#f3f5f8;color:#474d58;font-size:12px;padding:5px 11px;border-radius:3px;font-weight:500}
+.specs-list li{background:#f3f5f8;color:#414752;font-size:12px;padding:6px 12px;border-radius:3px;font-weight:600}
 
-.values{background:#0d0f12;color:#fff}
-.values .heading{color:#fff}
-.values .intro{color:#9da4b2}
-.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
-.value-card{border-top:1px solid #282d37;padding-top:24px}
-.value-card small{color:#767e8e;font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase}
-.value-card h3{font-size:20px;margin:12px 0 10px;font-weight:700}
-.value-card p{color:#a9b0bd;line-height:1.7;font-size:14px;margin:0}
+/* Tab 4: Philosophy View */
+.philosophy-wrapper{padding:90px 7%;background:#0d0f12;color:#fff}
+.philosophy-wrapper .section-heading{color:#fff}
+.philosophy-wrapper .section-intro{color:#9aa2b0}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:40px}
+.pillar-card{border-top:1px solid #292e39;padding-top:28px}
+.pillar-card small{color:#767e8e;font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase}
+.pillar-card h3{font-size:22px;margin:14px 0 12px;font-weight:800}
+.pillar-card p{color:#a9b0bd;line-height:1.75;font-size:15px;margin:0 0 16px}
+.pillar-card ul{padding-left:18px;margin:0;color:#8f96a3;font-size:13px;line-height:1.65}
 
-.contact{background:#f6f7f9;display:grid;grid-template-columns:1fr 1fr;gap:60px}
-.contact p{color:#555c68;line-height:1.75;font-size:15px}
-.contact-box{background:#fff;padding:34px;border:1px solid #e1e5ea;border-radius:6px}
+/* Tab 5: Contact View */
+.contact-wrapper{padding:90px 7%;background:#f6f7f9}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-info p{color:#555c68;line-height:1.75;font-size:16px}
+.contact-details-box{background:#fff;padding:26px;border:1px solid #e1e5ea;border-radius:6px;margin-top:28px}
+.contact-details-box h4{margin:0 0 10px;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:#111418}
+.contact-details-box p{margin:0;font-size:14px;color:#636b79;line-height:1.6}
+.contact-box{background:#fff;padding:36px;border:1px solid #e1e5ea;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,0.03)}
 .contact-box label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#333842;display:block;margin-bottom:6px}
-.contact-box input,.contact-box textarea{width:100%;padding:13px;border:1px solid #cbd1da;border-radius:3px;font-family:inherit;font-size:14px;margin-bottom:18px}
-.contact-box textarea{min-height:110px}
-.contact-box button{width:100%;background:#0d0f12;color:#fff;border:0;padding:15px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:3px;cursor:pointer}
+.contact-box input,.contact-box select,.contact-box textarea{width:100%;padding:13px;border:1px solid #cbd1da;border-radius:3px;font-family:inherit;font-size:14px;margin-bottom:18px}
+.contact-box textarea{min-height:120px}
+.contact-box button{width:100%;background:#0d0f12;color:#fff;border:0;padding:15px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:3px;cursor:pointer;transition:background 0.2s}
+.contact-box button:hover{background:#222731}
 .status-msg{font-size:13px;color:#18794e;margin-top:12px;font-weight:600;display:none}
 
-footer{background:#090a0d;color:#878e9b;padding:40px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:13px;border-top:1px solid #181b22}
-.foot-links{display:flex;gap:26px}
-.foot-links a{color:#878e9b;text-decoration:none}
-.foot-links a:hover{color:#fff}
+/* Footer */
+footer{background:#090a0d;color:#878e9b;padding:45px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:13px;border-top:1px solid #181b22}
+.foot-links{display:flex;gap:24px}
+.foot-links button{background:none;border:none;color:#878e9b;cursor:pointer;font-size:13px;padding:0;transition:color 0.2s}
+.foot-links button:hover{color:#fff}
 
+/* Responsive Breakpoints */
 @media(max-width:960px){
   .product-showcase{grid-template-columns:1fr}
-  .about,.contact{grid-template-columns:1fr}
-  .value-grid{grid-template-columns:1fr}
+  .story-grid,.contact-grid,.home-summary,.story-timeline,.pillar-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  header{height:auto;padding:16px 5%;flex-wrap:wrap;gap:12px}
+  nav{gap:4px;flex-wrap:wrap;width:100%}
+  nav button{font-size:12px;padding:8px 10px}
+  .section-heading{font-size:28px}
+  footer{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <a class="brand" href="#home">
+  <div class="brand" onclick="navigateTo('home')">
     <span class="brand-mark"><span></span><span></span><span></span></span>adibas
-  </a>
-  <nav>
-    <a href="#about">Story</a>
-    <a href="#collection">Collection</a>
-    <a href="#values">Philosophy</a>
-    <a href="#contact">Contact</a>
+  </div>
+  <nav id="navbar">
+    <button class="active" data-tab="home" onclick="navigateTo('home')">Home</button>
+    <button data-tab="story" onclick="navigateTo('story')">Story</button>
+    <button data-tab="collection" onclick="navigateTo('collection')">Collection</button>
+    <button data-tab="philosophy" onclick="navigateTo('philosophy')">Philosophy</button>
+    <button data-tab="contact" onclick="navigateTo('contact')">Contact</button>
   </nav>
 </header>
 
-<section class="hero" id="home">
-  <div class="hero-copy">
-    <div class="kicker">Built For Every Move</div>
-    <h1>Engineered for the Modern Pace</h1>
-    <p>Four distinct silhouettes grounded in restrained minimalism, ergonomic soles, and clean daily performance.</p>
-    <div class="hero-cta">
-      <a class="btn-primary" href="#collection">View Collection</a>
-      <a class="btn-secondary" href="#contact">Inquiries</a>
-    </div>
-  </div>
-</section>
+<main>
 
-<section class="section about" id="about">
-  <div>
-    <div class="section-kicker">Brand Story</div>
-    <h2 class="heading">Crafted Around Clean Living &amp; Movement</h2>
-    <p>adibas was created to offer footwear that bridges technical athletic utility with elevated everyday street styling. We avoid excess ornamentation in favor of purposeful contours, dependable soles, and quiet confidence.</p>
-    <p>Every style in our initial run is engineered with balanced cushioning, reinforced arch support, and resilient materials tailored for active city days.</p>
-  </div>
-  <div class="about-hero-box">
-    <div class="brand-mark" style="height:38px;justify-content:center;margin-bottom:14px;">
-      <span style="background:#0d0f12;width:9px;height:14px;"></span>
-      <span style="background:#0d0f12;width:9px;height:26px;"></span>
-      <span style="background:#0d0f12;width:9px;height:38px;"></span>
-    </div>
-    <div class="about-badge">adibas</div>
-    <div class="about-subtag">Built For Every Move</div>
-  </div>
-</section>
-
-<section class="section" id="collection">
-  <div class="section-kicker">Collection 01</div>
-  <h2 class="heading">Four Core Silhouettes</h2>
-  <p class="intro">Engineered from the ground up. Each pair features signature sculpted soles, reinforced support frames, and subtle side profile branding.</p>
-
-  <div class="product-showcase">
-    
-    <!-- 1. Vertex Run -->
-    <div class="product-card">
-      <div class="product-media">
-        <span class="product-tag">Performance</span>
-        <img src="https://lh3.googleusercontent.com/d/1Y6ojDB-LDuWY0L6JesYXSUZx2tC75FfU" alt="adibas Vertex Run Triple Black">
-      </div>
-      <div class="product-details">
-        <div class="product-header">
-          <h3>Vertex Run</h3>
-          <span class="product-edition">Triple Black</span>
+  <!-- 1. HOME SECTION -->
+  <section class="tab-content active" id="sec-home">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="hero-kicker">Built For Every Move</div>
+        <h1>Engineered for the Modern Pace</h1>
+        <p>A focused footwear lineup combining technical road stability with elevated, understated street ergonomics. Crafted for everyday transition without bulk or compromise.</p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="navigateTo('collection')">Explore Collection</button>
+          <button class="btn-secondary" onclick="navigateTo('story')">Read Our Story</button>
         </div>
-        <p class="product-desc">All-black technical road runner built with an aerodynamic knit body, integrated heel lock, and sculpted shock-absorbing geometry.</p>
-        <ul class="specs-list">
-          <li>Engineered Micro-Knit</li>
-          <li>Curved Aerodynamic Midsole</li>
-          <li>Reinforced Eyelet Rails</li>
-          <li>Reflective Heel Pull</li>
-        </ul>
       </div>
     </div>
-
-    <!-- 2. Urban Classic -->
-    <div class="product-card">
-      <div class="product-media">
-        <span class="product-tag">Court Series</span>
-        <img src="https://lh3.googleusercontent.com/d/1OuLNBRqvifnAEMNum6OxX1qhZcTKq5cO" alt="adibas Urban Classic Chalk Cement">
+    <div class="home-summary">
+      <div class="summary-card">
+        <h4>01 / Ergonomic Motion</h4>
+        <p>Curved soles and dual-density midsoles specifically formulated to relieve arch pressure across long transit days.</p>
       </div>
-      <div class="product-details">
-        <div class="product-header">
-          <h3>Urban Classic</h3>
-          <span class="product-edition">Chalk / Cement</span>
+      <div class="summary-card">
+        <h4>02 / Material Discipline</h4>
+        <p>Every silhouette pairs abrasion-tested base rubbers with premium knit, fine suede, and matte full-grain leathers.</p>
+      </div>
+      <div class="summary-card">
+        <h4>03 / Direct Studio Access</h4>
+        <p>Independent production with direct client support, boutique run consistency, and zero retail markups.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. STORY SECTION (ELABORATED) -->
+  <section class="tab-content" id="sec-story">
+    <div class="story-wrapper">
+      <div class="section-kicker">Genesis &amp; Direction</div>
+      <h2 class="section-heading">Form, Function, and Restrained Living</h2>
+      <p class="section-intro">Founded on the belief that everyday footwear should balance athletic structural support with clean visual discipline, adibas eliminates excessive exterior branding in favor of shape and longevity.</p>
+      
+      <div class="story-grid">
+        <div class="story-text">
+          <p>Our work began with a singular observation: modern urban life demands a shoe that can handle miles on foot without looking like high-visibility gym equipment. Most runners are over-engineered with synthetic plastic cages, while most casual lifestyle sneakers lack the internal cushioning required for continuous movement.</p>
+          <p>adibas was created to fill that gap. We strip away loud logos and gimmicks, refining our shapes down to the essentials: balanced tread width, reinforced heel cup anchoring, and responsive EVA midsole geometry that adapts to your stride.</p>
+          <p>By producing in small, focused drops, every stitch, perforation, and bonded edge receives strict quality inspection before entering circulation.</p>
         </div>
-        <p class="product-desc">Timeless low-top profile combining premium white full-grain leather, soft suede bumper overlays, and an abrasion-resistant rubber cupsole.</p>
-        <ul class="specs-list">
-          <li>Full-Grain Leather Panels</li>
-          <li>Brushed Suede Toe &amp; Heel</li>
-          <li>Cushioned Tongue Collar</li>
-          <li>Dual-Density Rubber Base</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 3. Flex Pro -->
-    <div class="product-card">
-      <div class="product-media">
-        <span class="product-tag">Lifestyle</span>
-        <img src="https://lh3.googleusercontent.com/d/1xySnaS89RUOjgT9FC4K4z1Dx282Dwdwq" alt="adibas Flex Pro Desert Sand">
-      </div>
-      <div class="product-details">
-        <div class="product-header">
-          <h3>Flex Pro</h3>
-          <span class="product-edition">Desert Sand</span>
+        <div class="story-banner-box">
+          <div class="brand-mark" style="height:44px;justify-content:center;margin-bottom:16px;">
+            <span style="background:#0d0f12;width:10px;height:16px;"></span>
+            <span style="background:#0d0f12;width:10px;height:30px;"></span>
+            <span style="background:#0d0f12;width:10px;height:44px;"></span>
+          </div>
+          <div class="story-brand-badge">adibas</div>
+          <div class="story-subtag">Built For Every Move</div>
         </div>
-        <p class="product-desc">Monochromatic earth-toned everyday shoe featuring high-ventilation open mesh, molded heel stabilization, and ultra-plush walking comfort.</p>
-        <ul class="specs-list">
-          <li>Breathable Open Knit</li>
-          <li>Contrast Taupe Heel Plate</li>
-          <li>Tonal Lacing System</li>
-          <li>Featherlight EVA Midsole</li>
-        </ul>
       </div>
-    </div>
 
-    <!-- 4. Street Edge -->
-    <div class="product-card">
-      <div class="product-media">
-        <span class="product-tag">High-Top</span>
-        <img src="https://lh3.googleusercontent.com/d/1sAlORKlANiEQpSq1S6kRrhi3mCXpdUvh" alt="adibas Street Edge Stealth High-Top">
-      </div>
-      <div class="product-details">
-        <div class="product-header">
-          <h3>Street Edge</h3>
-          <span class="product-edition">Stealth High-Top</span>
+      <div class="story-timeline">
+        <div class="timeline-item">
+          <h4>01. Anatomical Research</h4>
+          <p>Developing custom footbeds and wave soles designed to absorb ground impact across asphalt and concrete pavements.</p>
         </div>
-        <p class="product-desc">Padded high-top collar providing ankle stability with architectural stitch lines, perforated vamp, and an all-black leather matte finish.</p>
-        <ul class="specs-list">
-          <li>Matte Finished Leather</li>
-          <li>Padded Ankle Support Wrap</li>
-          <li>High-Density Stitching</li>
-          <li>Grip Pattern Outsole</li>
-        </ul>
+        <div class="timeline-item">
+          <h4>02. Textile Integrity</h4>
+          <p>Curating dense micro-knits and breathable open weaves alongside supple cowhide leathers and brushed suedes.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>03. Minimal Silhouette</h4>
+          <p>Restraining exterior typography and logos to crisp, subtle side profile signatures that complement your overall wardrobe.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- 3. COLLECTION SECTION (ELABORATED PRODUCT CARDS) -->
+  <section class="tab-content" id="sec-collection">
+    <div class="collection-wrapper">
+      <div class="section-kicker">Core Lineup</div>
+      <h2 class="section-heading">Four Studio Silhouettes</h2>
+      <p class="section-intro">Examine the foundational styles from our premiere drop. Each model addresses a distinct performance profile and daily transit need.</p>
 
-<section class="section values" id="values">
-  <div class="section-kicker" style="color:#717887">Our Standard</div>
-  <h2 class="heading">Built On Principles</h2>
-  <p class="intro">Every release balances structural endurance with daily ease. We design footwear for constant wear across seasons.</p>
-  <div class="value-grid">
-    <div class="value-card">
-      <small>Standard 01 / Ergonomics</small>
-      <h3>Engineered Motion</h3>
-      <p>Anatomically tuned arches and layered cushioning reduce foot fatigue during prolonged transit and active schedules.</p>
-    </div>
-    <div class="value-card">
-      <small>Standard 02 / Restraint</small>
-      <h3>Clean Aesthetics</h3>
-      <p>Monochrome bases, balanced proportions, and clean lines make each model versatile across street, work, and casual wear.</p>
-    </div>
-    <div class="value-card">
-      <small>Standard 03 / Durability</small>
-      <h3>Rigorous Materials</h3>
-      <p>Reinforced eyelet beds, bonded midsoles, and abrasion-resistant tread rubber ensure long product lifecycles.</p>
-    </div>
-  </div>
-</section>
+      <div class="product-showcase">
+        
+        <!-- Model 1: Vertex Run -->
+        <div class="product-card">
+          <div class="product-media">
+            <span class="product-tag">Performance Road</span>
+            <img src="https://lh3.googleusercontent.com/d/1Y6ojDB-LDuWY0L6JesYXSUZx2tC75FfU" alt="adibas Vertex Run Triple Black">
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h3>Vertex Run</h3>
+              <span class="product-edition">Triple Black</span>
+            </div>
+            <p class="product-desc">Engineered for long-distance city runners and fast commuters. The Vertex Run utilizes a multi-density sculpted wave sole that converts downward heel strikes into forward momentum, paired with a seamless micro-mesh sock for total breathability.</p>
+            <div class="specs-title">Technical Specifications</div>
+            <ul class="specs-list">
+              <li>High-Density Micro-Knit Upper</li>
+              <li>Sculpted Wave EVA Outsole</li>
+              <li>Integrated Rigid Heel Lock</li>
+              <li>3M Reflective Pull Webbing</li>
+              <li>Ortholite Antimicrobial Insole</li>
+            </ul>
+          </div>
+        </div>
 
-<section class="section contact" id="contact">
-  <div>
-    <div class="section-kicker">Client Service</div>
-    <h2 class="heading">Get in Touch</h2>
-    <p>Reach out to the adibas studio for distribution inquiries, press requests, or questions regarding upcoming product drops.</p>
-  </div>
-  <form class="contact-box" onsubmit="event.preventDefault();document.getElementById('statusMsg').style.display='block';this.reset();">
-    <label>Full Name</label>
-    <input required type="text" placeholder="Alex Taylor">
-    
-    <label>Email Address</label>
-    <input required type="email" placeholder="alex@domain.com">
-    
-    <label>Inquiry Type</label>
-    <input type="text" placeholder="Stockist, Sizing, or Studio Inquiry">
-    
-    <label>Message</label>
-    <textarea required placeholder="Your message..."></textarea>
-    
-    <button type="submit">Submit Inquiry</button>
-    <div class="status-msg" id="statusMsg">Your inquiry has been received. Our team will get back to you shortly.</div>
-  </form>
-</section>
+        <!-- Model 2: Urban Classic -->
+        <div class="product-card">
+          <div class="product-media">
+            <span class="product-tag">Court Silhouette</span>
+            <img src="https://lh3.googleusercontent.com/d/1OuLNBRqvifnAEMNum6OxX1qhZcTKq5cO" alt="adibas Urban Classic Chalk Cement">
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h3>Urban Classic</h3>
+              <span class="product-edition">Chalk / Cement</span>
+            </div>
+            <p class="product-desc">A refined court profile that honors heritage sportswear lines. Constructed with supple full-grain white leather and anchored by brushed cement suede bumpers on the toe and heel. Built with flat-stitched sidewall cupsole durability.</p>
+            <div class="specs-title">Technical Specifications</div>
+            <ul class="specs-list">
+              <li>Full-Grain Calfskin Leather</li>
+              <li>Brushed Grey Suede Reinforcements</li>
+              <li>Vulcanized Non-Marking Rubber Sole</li>
+              <li>Padded Leather Heel Lining</li>
+              <li>Tonal Cotton Flat Weave Laces</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Model 3: Flex Pro -->
+        <div class="product-card">
+          <div class="product-media">
+            <span class="product-tag">All-Day Lifestyle</span>
+            <img src="https://lh3.googleusercontent.com/d/1xySnaS89RUOjgT9FC4K4z1Dx282Dwdwq" alt="adibas Flex Pro Desert Sand">
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h3>Flex Pro</h3>
+              <span class="product-edition">Desert Sand</span>
+            </div>
+            <p class="product-desc">A warm, earth-toned hybrid trainer constructed with high-ventilation open honeycomb mesh. Designed for hot weather journeys, studio workouts, and effortless weekend styling. Anchored by a darker taupe heel stabilizer plate.</p>
+            <div class="specs-title">Technical Specifications</div>
+            <ul class="specs-list">
+              <li>Honeycomb Open-Cell Knit</li>
+              <li>Molded Taupe TPU Heel Counter</li>
+              <li>Featherlight Compression-Molded Midsole</li>
+              <li>Ergonomic Arch Support Bridge</li>
+              <li>Padded Ankle Comfort Collar</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Model 4: Street Edge -->
+        <div class="product-card">
+          <div class="product-media">
+            <span class="product-tag">Stealth High-Top</span>
+            <img src="https://lh3.googleusercontent.com/d/1sAlORKlANiEQpSq1S6kRrhi3mCXpdUvh" alt="adibas Street Edge Stealth High-Top">
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h3>Street Edge</h3>
+              <span class="product-edition">Stealth All-Black</span>
+            </div>
+            <p class="product-desc">A mid/high-cut silhouette commanding ankle support without structural stiffness. Fitted with a padded collar, tonal ventilation perforations along the toe box, and triple-stitched leather panels for cold-weather insulation and street utility.</p>
+            <div class="specs-title">Technical Specifications</div>
+            <ul class="specs-list">
+              <li>Matte Black Treated Cowhide</li>
+              <li>Extended High-Rise Eyelet Stays</li>
+              <li>Micro-Perforated Breathable Vamp</li>
+              <li>Ankle Support Collar Wrap</li>
+              <li>Traction Hex-Grip Outsole</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PHILOSOPHY SECTION (ELABORATED) -->
+  <section class="tab-content" id="sec-philosophy">
+    <div class="philosophy-wrapper">
+      <div class="section-kicker" style="color:#7b8493">Design Standard</div>
+      <h2 class="section-heading">Our Three Core Principles</h2>
+      <p class="section-intro">We do not produce footwear according to seasonal fashion trends. We design systems engineered for durability, anatomical balance, and daily reliability.</p>
+
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <small>Pillar 01 / Ergonomics</small>
+          <h3>Engineered Motion</h3>
+          <p>Every sole design begins with gait analysis. We prioritize the transition between heel strike and toe roll-off, reducing tendon strain during high-step-count days.</p>
+          <ul>
+            <li>Dynamic Arch Suspension</li>
+            <li>Energy-Return Composite Midsoles</li>
+            <li>Wide Toe Boxes for Natural Splay</li>
+          </ul>
+        </div>
+        <div class="pillar-card">
+          <small>Pillar 02 / Aesthetics</small>
+          <h3>Clean Restraint</h3>
+          <p>A great pair of sneakers should integrate with your wardrobe rather than scream for attention. We focus on neutral palettes, clean panels, and refined silhouettes.</p>
+          <ul>
+            <li>Tone-Matched Eyelets &amp; Laces</li>
+            <li>Laser-Crisp Signature Branding</li>
+            <li>Matte, Non-Gloss Surface Finishes</li>
+          </ul>
+        </div>
+        <div class="pillar-card">
+          <small>Pillar 03 / Durability</small>
+          <h3>Material Rigor</h3>
+          <p>Fast-fashion footwear wears down in months. We utilize high-abrasion rubber outsoles and reinforced double stitching to ensure multi-year structural life.</p>
+          <ul>
+            <li>Reinforced Lace Stay Channels</li>
+            <li>Heat-Sealed Seam Adhesion</li>
+            <li>Dual-Density Anti-Flattening Foam</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CONTACT SECTION (ELABORATED) -->
+  <section class="tab-content" id="sec-contact">
+    <div class="contact-wrapper">
+      <div class="section-kicker">Client Service &amp; Press</div>
+      <h2 class="section-heading">Connect with the adibas Studio</h2>
+      <p class="section-intro">Have questions regarding sizing, regional distribution, wholesale partnerships, or future capsule releases? Our studio team is here to assist.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>We work directly with select global stockists, retailers, and individual patrons. All inquiries receive direct attention from our production and sizing team.</p>
+          
+          <div class="contact-details-box">
+            <h4>Studio &amp; Operations</h4>
+            <p><strong>adibas Brand Lab &amp; Design Group</strong><br>
+            Product Development &amp; Distribution<br>
+            Inquiries: studio@adibas-official.com<br>
+            Hours: Monday – Friday, 09:00 – 18:00 UTC</p>
+          </div>
+
+          <div class="contact-details-box" style="margin-top:16px">
+            <h4>Sizing Guidance</h4>
+            <p>Our silhouettes run true-to-size according to standard US/EU sizing charts. If you prefer a relaxed fit or wear thicker socks, we recommend selecting a half size up for our high-top models.</p>
+          </div>
+        </div>
+
+        <form class="contact-box" onsubmit="event.preventDefault();document.getElementById('statusMsg').style.display='block';this.reset();">
+          <label>Full Name</label>
+          <input required type="text" placeholder="e.g. Liam Henderson">
+
+          <label>Email Address</label>
+          <input required type="email" placeholder="liam@example.com">
+
+          <label>Inquiry Topic</label>
+          <select>
+            <option>Sizing &amp; Fit Consultation</option>
+            <option>Retail &amp; Stockist Inquiry</option>
+            <option>Press &amp; Editorial Request</option>
+            <option>General Studio Question</option>
+          </select>
+
+          <label>Your Message</label>
+          <textarea required placeholder="Write your message or inquiry details here..."></textarea>
+
+          <button type="submit">Submit Studio Inquiry</button>
+          <div class="status-msg" id="statusMsg">Your message has been sent to our studio. We will reply via email shortly.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  <a class="brand" href="#home">
+  <div class="brand" onclick="navigateTo('home')">
     <span class="brand-mark"><span></span><span></span><span></span></span>adibas
-  </a>
-  <div class="foot-links">
-    <a href="#about">Story</a>
-    <a href="#collection">Collection</a>
-    <a href="#values">Philosophy</a>
-    <a href="#contact">Contact</a>
   </div>
-  <span>&copy; 2026 adibas Brand Inc. All rights reserved.</span>
+  <div class="foot-links">
+    <button onclick="navigateTo('story')">Story</button>
+    <button onclick="navigateTo('collection')">Collection</button>
+    <button onclick="navigateTo('philosophy')">Philosophy</button>
+    <button onclick="navigateTo('contact')">Contact</button>
+  </div>
+  <span>&copy; 2026 adibas Brand Inc. Built for Every Move.</span>
 </footer>
+
+<script>
+// State management: single URL, tabbed view switcher
+function navigateTo(sectionId) {
+  // Hide all sections
+  const sections = document.querySelectorAll('.tab-content');
+  sections.forEach(sec => sec.classList.remove('active'));
+
+  // Deactivate all navbar buttons
+  const navButtons = document.querySelectorAll('#navbar button');
+  navButtons.forEach(btn => btn.classList.remove('active'));
+
+  // Activate selected section
+  const targetSection = document.getElementById('sec-' + sectionId);
+  if (targetSection) {
+    targetSection.classList.add('active');
+  }
+
+  // Highlight corresponding navbar button
+  const targetBtn = document.querySelector(`#navbar button[data-tab="${sectionId}"]`);
+  if (targetBtn) {
+    targetBtn.classList.add('active');
+  }
+
+  // Smooth scroll to top of content view
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
